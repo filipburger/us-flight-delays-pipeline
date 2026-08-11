@@ -236,3 +236,12 @@ logs/
 
 # uv
 .venv/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# keys anywhere
+keys/
