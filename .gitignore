@@ -245,3 +245,10 @@ crash.log
 
 # keys anywhere
 keys/
+
+# Data files — never commit source data
+data/
+*.csv
+*.parquet
+*.zip
+EOF

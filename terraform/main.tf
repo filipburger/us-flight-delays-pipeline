@@ -35,6 +35,27 @@ resource "google_bigquery_dataset" "raw_bts" {
   description = "Raw BTS TranStats extracts, loaded as-is from GCS"
 }
 
+resource "google_bigquery_table" "ontime_reporting_external" {
+  dataset_id = "raw_bts"
+  table_id = "ontime_reporting"
+  project = var.project_id
+  deletion_protection = false
+
+  external_data_configuration {
+    autodetect = true
+    source_format = "PARQUET"
+    source_uris = [ "gs://${var.bucket_name}/raw/bts_ontime_reporting/*" ]
+
+  # Reads year/month form the key=value directory names so queries
+  # filtered on same scan only the relevant files
+  hive_partitioning_options {
+    mode = "AUTO"
+    source_uri_prefix = "gs://${var.bucket_name}/raw/bts_ontime_reporting/"
+    require_partition_filter = false
+    }
+  }
+}
+
 resource "google_bigquery_dataset" "staging" {
   dataset_id  = "flights_staging"
   project     = var.project_id

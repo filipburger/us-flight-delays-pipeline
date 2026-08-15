@@ -1,0 +1,5 @@
+# airflow/requirements.txt
+apache-airflow-providers-google
+pandas
+pyarrow
+requests
