@@ -1,0 +1,18 @@
+[project]
+name = "us-flight-delays-pipeline"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ipykernel>=7.3.0",
+    "pandas>=3.0.5",
+    "requests>=2.34.2",
+]
+
+[dependency-groups]
+dev = [
+    "apache-airflow-core>=3.3.1",
+    "apache-airflow-providers-google>=22.3.0",
+    "ruff>=0.16.2",
+]
