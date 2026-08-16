@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import io
 import logging
 import zipfile
+import gc
 
 import pandas as pd
 import requests
@@ -111,10 +112,9 @@ def annotate_columns(df: pd.DataFrame, year: int, month: int) -> pd.DataFrame:
 @dag(
     dag_id="bts_ontime_reporting",
     schedule="@monthly",
-    start_date=datetime(2026, 5, 1),
-    end_date=datetime(2026, 8, 1),
+    start_date=datetime(2018, 1, 1),
     catchup=True,
-    max_active_runs=1,
+    max_active_runs=3,
     tags=["bts_ontime_reporting"],
     default_args={"retries": 1},
 )
@@ -169,6 +169,10 @@ def bts_ontime_reporting():
         buffer = io.BytesIO()
         df.to_parquet(buffer, engine="pyarrow", compression="snappy", index=False)
         log.info("Wrote %s rows x %s cols to buffer memory", len(df), len(df.columns))
+
+        # to free up memory
+        del df
+        gc.collect()
 
         hook.upload(
             bucket_name=GCS_BUCKET,
