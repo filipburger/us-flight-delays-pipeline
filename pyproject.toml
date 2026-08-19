@@ -16,3 +16,7 @@ dev = [
     "apache-airflow-providers-google>=22.3.0",
     "ruff>=0.16.2",
 ]
+
+[tool.uv.workspace]
+members = []
+exclude = ["dbt"]
