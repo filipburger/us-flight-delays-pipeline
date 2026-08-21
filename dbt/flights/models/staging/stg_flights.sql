@@ -5,15 +5,26 @@
 --
 -- Casts below are only applied where a real transform happens (STRING to
 -- DATE, 0/1 flag to BOOL). Columns already typed correctly at ingestion
--- are simply renamed, since BigQuery has one integer type and string type
+-- are simply renamed, since BigQuery has one integer type and string
+-- type.
+--
+-- flight_outcome distinguishes cancellation timing, discovered by
+-- cross-tabulating Cancelled/Diverted/DepTime/WheelsOff/
+-- DivAirportLandings. DivAirportLandings=9 is a BTS sentinel (not a
+-- real count) meaning "cancelled after departure, diversion columns
+-- populated but this flight was never actually diverted". See
+-- "Cancellation timing" in docs/data_quality_notes.md.
 
 with source as (
+
     select * from {{ source('raw_bts', 'ontime_reporting') }}
+
 ),
 
 renamed_and_typed as (
+
     select
-    -- identifiers
+        -- identifiers
         {{ dbt_utils.generate_surrogate_key([
             'source_year', 'source_month', 'Reporting_Airline',
             'Flight_Number_Reporting_Airline', 'FlightDate',
@@ -23,7 +34,8 @@ renamed_and_typed as (
         Tail_Number as tail_number,
         Reporting_Airline as carrier_code,
 
-        -- date - the source of truth for all date logic, not source_year/source_month
+        -- date - the source of truth for all date logic, not
+        -- source_year/source_month
         parse_date('%Y-%m-%d', FlightDate) as flight_date,
         Year as flight_year,
         Quarter as flight_quarter,
@@ -43,8 +55,8 @@ renamed_and_typed as (
         DestCityMarketID as destination_city_market_id,
         DestState as destination_state,
 
-        -- scheduled vs actual — kept as raw HHMM ints; real timestamps need
-        -- each airport's timezone, built once dim_airport exists
+        -- scheduled vs actual — kept as raw HHMM ints; real timestamps
+        -- need each airport's timezone, built once dim_airport exists
         CRSDepTime as scheduled_departure_time,
         DepTime as actual_departure_time,
         CRSArrTime as scheduled_arrival_time,
@@ -56,8 +68,9 @@ renamed_and_typed as (
         ArrDelay as arrival_delay_minutes,
         ArrDel15 = 1 as arrival_delayed_15,
 
-        -- delay cause breakdown — populated only when arrival_delay_minutes >= 15,
-        -- and only from June 2003 onward (see data_quality_notes.md)
+        -- delay cause breakdown — populated only when
+        -- arrival_delay_minutes >= 15, and only from June 2003 onward
+        -- (see data_quality_notes.md)
         CarrierDelay as carrier_delay_minutes,
         WeatherDelay as weather_delay_minutes,
         NASDelay as nas_delay_minutes,
@@ -69,6 +82,20 @@ renamed_and_typed as (
         CancellationCode as cancellation_code,
         Diverted = 1 as was_diverted,
 
+        case
+            when Diverted = 1
+                then 'diverted'
+            when Cancelled = 1 and DepTime is null
+                then 'cancelled_before_pushback'
+            when Cancelled = 1 and WheelsOff is null
+                then 'cancelled_after_pushback'
+            when Cancelled = 1 and DivAirportLandings = 9
+                then 'cancelled_after_departure'
+            when Cancelled = 1
+                then 'cancelled_other'
+            else 'completed'
+        end as flight_outcome,
+
         -- flight characteristics
         CRSElapsedTime as scheduled_elapsed_minutes,
         ActualElapsedTime as actual_elapsed_minutes,
@@ -76,15 +103,20 @@ renamed_and_typed as (
         Distance as distance_miles,
         DistanceGroup as distance_group,
 
-        -- last non-null Div*Airport if diverted, else the scheduled destination
-        coalesce(
-            Div5Airport, Div4Airport, Div3Airport, Div2Airport, Div1Airport,
-            Dest
-        ) as final_destination_airport,
-        DivAirportLandings as diversion_landing_count,
+        -- final_diversion_airport only meaningful for genuine
+        -- diversions (Diverted = 1); DivAirportLandings=9 rows have
+        -- Div* columns populated too, but that's ground-return activity
+        -- on a cancelled flight, handled in stg_diversion_detail
+        case
+            when Diverted = 1 then coalesce(
+                Div5Airport, Div4Airport, Div3Airport,
+                Div2Airport, Div1Airport
+            )
+        end as final_diversion_airport,
 
-        -- provenance — which file this row came from, not what it describes.
-        -- See "Provenance vs. source columns" in data_quality_notes.md.
+        -- provenance — which file this row came from, not what it
+        -- describes. See "Provenance vs. source columns" in
+        -- docs/data_quality_notes.md.
         source_year,
         source_month,
         _source_file,
