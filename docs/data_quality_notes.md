@@ -180,3 +180,94 @@ into the next, so `N→a`, `T→g`, `2→F`. `L_CANCELLATION` encodes as
 `table_ID=236`. Because the alphabet has 62 characters rather than 26, the
 transform is not self-inverse and encode/decode need separate tables. See
 `bts_encode()` / `bts_decode()` in `dags/bts_lookups.py`.
+
+## 6. Cancellation timing (`flight_outcome`)
+
+**Starting point:** while validating the `stg_diversion_detail` join, a set of
+rows appeared with `was_diverted = false` on the parent flight despite having
+populated diversion detail — apparently contradictory.
+
+**Investigation:** cross-tabulating `Cancelled`, `Diverted`, and
+`DivAirportLandings` revealed a pattern:
+
+```sql
+select DivAirportLandings, Diverted, Cancelled, count(*) as flight_count
+from `de-zoomcamp-499310.raw_bts.ontime_reporting`
+group by 1, 2, 3
+order by 2, 3, 4 desc;
+```
+
+`DivAirportLandings = 9` occurs *only* when `Diverted = 0` and
+`Cancelled = 1` — never alongside a genuine diverted flight, where the field
+correctly holds 1, 2, or 3. **9 is a BTS sentinel value, not a real landing
+count.** It marks a cancelled flight whose `Div1`–`Div5` columns are
+nonetheless populated, because BTS tracks diversion-style ground activity
+(e.g. an aircraft that departed, diverted or turned back, and only then was
+formally cancelled) separately from the `Diverted` flag, which reflects
+final outcome rather than whether any diversion occurred in transit.
+
+A representative case (`G4` flight AZA→BLV, tail `277NV`, `Diverted = 0`,
+`Cancelled = 1`): departed AZA 144 minutes late, landed at **SGF** (a real
+third airport, `Div1`), departed again, landed back at **AZA** (`Div2`,
+matching `Div1TailNum` to the flight's own tail number, confirming it's the
+same aircraft), then never flew again. A genuine two-stop diversion that
+BTS's `Diverted` flag reports as `0` because the flight was ultimately
+cancelled.
+
+**Further investigation** into cancelled flights specifically, by comparing
+`DepTime`/`WheelsOff` nullity:
+
+```sql
+select Cancelled, Diverted,
+  DepTime is null as no_dep_time,
+  WheelsOff is null as no_wheels_off,
+  DivAirportLandings, count(*) as n
+from `de-zoomcamp-499310.raw_bts.ontime_reporting`
+where Cancelled = 1
+group by 1, 2, 3, 4, 5
+order by n desc;
+```
+
+Cancelled flights fall into four categories by how far they progressed
+before cancellation:
+
+| `flight_outcome` | `DepTime` | `WheelsOff` | `DivAirportLandings` | Rows (approx.) |
+|---|---|---|---|---|
+| `cancelled_before_pushback` | null | null | 0 | 1,148,956 |
+| `cancelled_after_pushback` | populated | null | 0 | 25,205 |
+| `cancelled_after_departure` | populated | populated | 9 (sentinel) | 5,897 |
+| `cancelled_other` | — | — | — | 1 |
+
+The `cancelled_other` bucket exists purely to catch the single
+non-conforming row found during validation, rather than silently dropping
+or misclassifying it.
+
+**Implementation:** `stg_flights.flight_outcome` encodes these five states
+(plus `diverted` and `completed`), giving the dashboard a genuine measure
+of cancellation severity — "never left the gate" and "was airborne, then
+turned back" are operationally very different events that a bare
+`Cancelled` boolean collapses together.
+
+---
+
+## 7. Diversion detail — scope decision
+
+Given the sentinel finding above, `stg_diversion_detail` deliberately does
+**not** filter on `Diverted = 1`. Doing so would incorrectly exclude real
+diversion events like the SGF/AZA example, whose parent row reports
+`Diverted = 0` purely because the flight was ultimately cancelled.
+
+Instead, every row with a populated `Div*Airport` is kept — whether the
+parent flight ultimately diverted-and-landed, turned back and was
+cancelled, or diverted more than once before being abandoned — with an
+explicit flag distinguishing a genuine alternate-airport diversion from a
+same-airport ground return:
+
+```sql
+diversion_airport != origin_airport as diverted_to_different_airport
+```
+
+The parent flight's `flight_outcome` (see above) provides the eventual
+disposition; `stg_diversion_detail` provides the in-transit event log.
+Together they give a complete, non-lossy picture that neither the
+`Diverted` flag nor `DivAirportLandings` provides alone.

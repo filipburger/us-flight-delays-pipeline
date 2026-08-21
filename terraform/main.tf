@@ -23,56 +23,89 @@ resource "google_storage_bucket" "data_lake" {
 
   lifecycle_rule {
     condition { age = 90 }
-    action    { type = "Delete" }
+    action { type = "Delete" }
   }
 }
 
 # Raw — one dataset per source system, keeps provenance explicit
 resource "google_bigquery_dataset" "raw_bts" {
-  dataset_id  = "raw_bts"
-  project     = var.project_id
-  location    = var.region
-  description = "Raw BTS TranStats extracts, loaded as-is from GCS"
+  dataset_id            = "raw_bts"
+  project               = var.project_id
+  location              = var.region
+  description           = "Raw BTS TranStats extracts, loaded as-is from GCS"
+  max_time_travel_hours = "168"
 }
 
 resource "google_bigquery_table" "ontime_reporting_external" {
-  dataset_id = "raw_bts"
-  table_id = "ontime_reporting"
-  project = var.project_id
+  dataset_id          = "raw_bts"
+  table_id            = "ontime_reporting"
+  project             = var.project_id
   deletion_protection = false
 
   external_data_configuration {
-    autodetect = true
+    autodetect    = true
     source_format = "PARQUET"
-    source_uris = [ "gs://${var.bucket_name}/raw/bts_ontime_reporting/*" ]
+    source_uris   = ["gs://${var.bucket_name}/raw/bts_ontime_reporting/*"]
 
-  # Reads year/month form the key=value directory names so queries
-  # filtered on same scan only the relevant files
-  hive_partitioning_options {
-    mode = "AUTO"
-    source_uri_prefix = "gs://${var.bucket_name}/raw/bts_ontime_reporting/"
-    require_partition_filter = false
+    # Reads year/month form the key=value directory names so queries
+    # filtered on same scan only the relevant files
+    hive_partitioning_options {
+      mode                     = "AUTO"
+      source_uri_prefix        = "gs://${var.bucket_name}/raw/bts_ontime_reporting/"
+      require_partition_filter = false
     }
   }
 }
 
+locals {
+  bts_lookup_tables = [
+    "l_unique_carriers",
+    "l_cancellation",
+    "l_ontime_delay_groups",
+    "l_city_market_id"
+  ]
+}
+
+
+resource "google_bigquery_table" "bts_lookups" {
+  for_each = toset(local.bts_lookup_tables)
+
+  dataset_id          = google_bigquery_dataset.raw_bts.dataset_id
+  table_id            = each.key
+  project             = var.project_id
+  deletion_protection = false
+
+
+  external_data_configuration {
+    autodetect    = true
+    source_format = "PARQUET"
+    source_uris   = ["gs://${var.bucket_name}/raw/bts_lookups/${each.key}/*"]
+  }
+}
+
+
 resource "google_bigquery_dataset" "staging" {
-  dataset_id  = "flights_staging"
-  project     = var.project_id
-  location    = var.region
-  description = "dbt staging models — cleaned, typed, conformed"
+  dataset_id            = "flights_staging"
+  project               = var.project_id
+  location              = var.region
+  description           = "dbt staging models — cleaned, typed, conformed"
+  max_time_travel_hours = "168"
+
 }
 
 resource "google_bigquery_dataset" "core" {
-  dataset_id  = "flights_core"
-  project     = var.project_id
-  location    = var.region
-  description = "dbt core models — star schema facts and dimensions"
+  dataset_id            = "flights_core"
+  project               = var.project_id
+  location              = var.region
+  description           = "dbt core models — star schema facts and dimensions"
+  max_time_travel_hours = "168"
+
 }
 
 resource "google_bigquery_dataset" "marts" {
-  dataset_id  = "flights_marts"
-  project     = var.project_id
-  location    = var.region
-  description = "dbt marts — dashboard-facing aggregates"
+  dataset_id            = "flights_marts"
+  project               = var.project_id
+  location              = var.region
+  description           = "dbt marts — dashboard-facing aggregates"
+  max_time_travel_hours = "168"
 }

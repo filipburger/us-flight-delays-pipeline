@@ -1,0 +1,10 @@
+sources:
+  - name: raw_bts
+    database: de-zoomcamp-499310
+    schema: raw_bts
+    tables:
+      - name: ontime_reporting
+      - name: l_unique_carriers
+      - name: l_cancellation
+      - name: l_ontime_delay_groups
+      - name: l_city_market_id
