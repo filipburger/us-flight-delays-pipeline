@@ -1,3 +1,14 @@
+"""
+Regenerate the holidays seed. Run manually when:
+  - the `holidays` package releases an update (e.g. a new federal
+    holiday is legislated), or
+  - the covered year range needs extending.
+
+    uv pip install --upgrade holidays
+    uv run python scripts/generate_holidays_seed.py
+    cd dbt/flights && dbt seed
+"""
+
 import csv
 import holidays
 
