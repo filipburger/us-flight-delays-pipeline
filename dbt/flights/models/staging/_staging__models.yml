@@ -1,0 +1,47 @@
+# models/staging/_staging__models.yml — new file
+models:
+  - name: stg_flights
+    description: One row per operated flight leg, typed and enriched.
+    columns:
+      - name: flight_id
+        tests:
+          - unique
+          - not_null
+      - name: flight_outcome
+        description: >
+          Cancellation timing derived from Cancelled/Diverted/DepTime/
+          WheelsOff/DivAirportLandings. DivAirportLandings=9 is a BTS
+          sentinel, not a real count — see "Cancellation timing" in
+          docs/data_quality_notes.md.
+        tests:
+          - accepted_values:
+              values: ['completed', 'diverted',
+                       'cancelled_before_pushback',
+                       'cancelled_after_pushback',
+                       'cancelled_after_departure', 'cancelled_other']
+
+  - name: stg_diversion_detail
+    description: One row per diversion leg, unpivoted from Div1-5.
+    columns:
+      - name: flight_id
+        description: Foreign key to stg_flights.
+
+  - name: stg_carriers
+    columns:
+      - name: carrier_code
+        tests: [unique, not_null]
+
+  - name: stg_cancellation_reasons
+    columns:
+      - name: cancellation_code
+        tests: [unique, not_null]
+
+  - name: stg_delay_groups
+    columns:
+      - name: delay_group_code
+        tests: [unique, not_null]
+
+  - name: stg_city_markets
+    columns:
+      - name: city_market_id
+        tests: [unique, not_null]

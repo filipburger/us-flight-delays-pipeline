@@ -1,0 +1,84 @@
+models:
+  - name: dim_carrier
+    description: One row per carrier, keyed on BTS's unique carrier code.
+    columns:
+      - name: carrier_code
+        description: > 
+          BTS unique carrier code  (e. g. WN, DL). Use this over IATA code -
+          IATA codes are reassigned to different carriers over time; see
+          "Lookup tables" in docs/data_quality_notes.md.
+        tests:
+          - unique
+          - not_null
+      - name: carrier_name
+        description: Full carrier name (e.g. "Southwest Airlines Co.")
+
+  - name: dim_cancellation_reason
+    description: One row per cancellation reason code.
+    columns:
+      - name: cancellation_code
+        description: >
+          Single-letter code (A/B/C/D = Carrier/Weather/Nation Air System/ Security). Joins to stg_flights.cancellation_code
+        tests:
+          - unique
+          - not_null
+      - name: cancellation_reason
+        description: Human-readable cacellation cause.
+
+  - name: dim_delay_group
+    description: >
+      One row per 15-minutes delay band. Shared lookup for both departure and arrival delay groups.
+    columns:
+      - name: delay_group_code
+        description: >
+          Integer delay band, e.g. -1 = "-15 to -1 min early", 4 =
+          "45-59 min late". Joins to stg_flights.departure_delay_group
+          or arrival_delay_group.
+        tests:
+          - unique
+          - not_null
+      - name: delay_group_label
+        description: Human-readable delay band description.
+  - name: dim_date
+    description: >
+      Generated date spine, 1987-01-01 to 2050-12-31. Indepedent of what data is actually loaded. See "Date dimension and holiday flags in docs/data_quality_notes.md."
+    columns:
+      - name: date_day
+        description: The calendar date. Primary key.
+        tests:
+          - unique
+          - not null
+      - name: year
+        tests:
+          - not null
+      - name: month
+        tests:
+          - not null
+      - name: month_name
+        description: Full month name, e.g. "January".
+      - name: day_of_month
+      - name: day_of_week
+        description: >
+          BigQuery DAYOFWEEK convention: 1=Sunday .. 7=Saturday.
+      - name: day_name
+        description: Winter/Spring/Summer/Autumn, by metorological month.
+      - name: holiday_name
+        description: >
+          US federal holiday name if date_day is a holiday, else null.
+          Sourced from the holidays seed - see data_quality_notes.md.
+      - name: is_holiday
+        description: True if date_day is a US federal holiday.
+
+seeds:
+  - name: holidays
+    description: >
+      US federal holiday, 1987-2050, generated via the Python 'holidays' 
+      package. See "Date dimension and holiday flags" in docs/data_quality_notes.md
+    columns:
+      - name: holiday_date
+        tests:
+          - unique
+          - not_null
+      - name: holiday_name
+        tests:
+          - not null

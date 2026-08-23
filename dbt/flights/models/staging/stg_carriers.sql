@@ -5,3 +5,5 @@ select
     Description as carrier_name
 
 from {{ source('raw_bts', 'l_unique_carriers') }}
+where Code is not null
+
