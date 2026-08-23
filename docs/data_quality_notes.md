@@ -271,3 +271,25 @@ The parent flight's `flight_outcome` (see above) provides the eventual
 disposition; `stg_diversion_detail` provides the in-transit event log.
 Together they give a complete, non-lossy picture that neither the
 `Diverted` flag nor `DivAirportLandings` provides alone.
+
+## 8. Date dimension and holiday flags
+
+`dim_date` is a generated date spine (`GENERATE_DATE_ARRAY`), independent
+of what data is actually loaded — supports gap analysis and stays stable
+regardless of backfill progress. Scoped 1987-01-01 through 2050-12-31
+(~23k rows, negligible cost), materialized as `table` since incremental
+offers no benefit at this size and a full rebuild correctly absorbs any
+change to the holidays seed.
+
+**Holiday source:** `seeds/holidays.csv`, generated via the Python
+`holidays` package rather than hand-computed in SQL — floating holidays
+(Thanksgiving) and lunar-cycle holidays (Easter) are non-trivial to
+derive correctly, and a maintained library beats a hand-rolled
+implementation here. Standard 11 US federal holidays (OPM), 2000–2050,
+spot-checked against the official 2026 schedule.
+
+**Deliberately excluded — Black Friday.** High retail sales volume isn't
+evidence of high air travel volume; pre/post-holiday travel also bleeds
+across multiple days in ways a single flagged date can't capture well.
+Computable later with the same nth-weekday logic as the federal holidays
+if reconsidered (4th Thursday of November + 1 day).
