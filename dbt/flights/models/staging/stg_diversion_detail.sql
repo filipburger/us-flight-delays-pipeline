@@ -37,7 +37,7 @@ with_flight_key as (
         {{ dbt_utils.generate_surrogate_key([
             'source_year', 'source_month', 'Reporting_Airline',
             'Flight_Number_Reporting_Airline', 'FlightDate',
-            'Origin', 'Dest', 'CRSDepTime'
+            'Origin', 'Dest', 'CRSDepTime', 'Tail_Number'
         ]) }} as flight_id,
         *
     from source
