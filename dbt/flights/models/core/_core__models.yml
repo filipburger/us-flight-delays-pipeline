@@ -77,6 +77,47 @@ models:
       - name: is_holiday
         description: True if date_day is a US federal holiday.
 
+  - name: fct_flights
+    description: One row per operated flight leg. See stg_flights for
+      full column derivation notes.
+    columns:
+      - name: flight_id
+        description: Surrogate key, unique per physical flight.
+        tests:
+          - unique
+          - not_null
+      - name: carrier_code
+        description: BTS unique carrier code. Foreign key to dim_carrier.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_carrier')
+                field: carrier_code
+      - name: cancellation_code
+        description: >
+          Single-letter cancellation reason. Foreign key to
+          dim_cancellation_reason. Null for non-cancelled flights.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_cancellation_reason')
+                field: cancellation_code
+      - name: flight_outcome
+        description: >
+          Cancellation timing category. See "Cancellation timing" in
+          docs/data_quality_notes.md.
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['completed', 'diverted',
+                        'cancelled_before_pushback',
+                        'cancelled_after_pushback',
+                        'cancelled_after_departure', 'cancelled_other']
+      - name: was_diverted
+        description: True if flight actually diverted (per BTS Diverted flag).
+      - name: distance_miles
+        description: Great-circle distance between origin and destination.
+
 seeds:
   - name: holidays
     description: >
