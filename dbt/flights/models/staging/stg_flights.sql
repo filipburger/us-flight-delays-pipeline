@@ -33,6 +33,7 @@ renamed_and_typed as (
         Flight_Number_Reporting_Airline as flight_number,
         Tail_Number as tail_number,
         Reporting_Airline as carrier_code,
+        IATA_CODE_Reporting_Airline as carrier_iata_code,
 
         -- date - the source of truth for all date logic, not
         -- source_year/source_month
@@ -65,8 +66,10 @@ renamed_and_typed as (
         -- delay measures
         DepDelay as departure_delay_minutes,
         DepDel15 = 1 as departure_delayed_15,
+        DepartureDelayGroups as departure_delay_group_code,
         ArrDelay as arrival_delay_minutes,
         ArrDel15 = 1 as arrival_delayed_15,
+        ArrivalDelayGroups as arrival_delay_group_code,
 
         -- delay cause breakdown — populated only when
         -- arrival_delay_minutes >= 15, and only from June 2003 onward
