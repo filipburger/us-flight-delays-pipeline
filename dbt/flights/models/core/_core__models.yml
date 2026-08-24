@@ -117,6 +117,39 @@ models:
         description: True if flight actually diverted (per BTS Diverted flag).
       - name: distance_miles
         description: Great-circle distance between origin and destination.
+      - name: origin_airport
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_airport')
+                field: airport_code
+      - name: destination_airport
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_airport')
+                field: airport_code
+
+  - name: dim_airport
+    description: >
+      One row per airport code, combining origin and destination
+      airports from stg_flights. Deliberately thin — no coordinates
+      or timezone yet; see "dim_airport scope" in
+      docs/data_quality_notes.md for the planned OurAirports
+      extension.
+    columns:
+      - name: airport_code
+        description: >
+          IATA airport code (e.g. "ATL"). Verified stable per state
+          across the full loaded date range — no airport code was
+          found associated with more than one state.
+        tests:
+          - unique
+          - not_null
+      - name: state
+        description: US state code where the airport is located.
+        tests:
+          - not_null
 
 seeds:
   - name: holidays
