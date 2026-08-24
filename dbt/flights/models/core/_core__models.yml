@@ -10,6 +10,14 @@ models:
         tests:
           - unique
           - not_null
+      - name: carrier_iata_code
+        description: >
+          IATA carrier code (e.g. "FR" for Ryanair). Not the join key —
+          Reporting_Airline (BTS's unique carrier code) is used for joins,
+          since IATA codes are reassigned to different carriers over time.
+          Carried here as an attribute since it's the identifier most
+          commonly used in industry conversation. See "Lookup tables" in
+          docs/data_quality_notes.md.
       - name: carrier_name
         description: Full carrier name (e.g. "Southwest Airlines Co.")
 

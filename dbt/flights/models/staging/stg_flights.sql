@@ -33,6 +33,7 @@ renamed_and_typed as (
         Flight_Number_Reporting_Airline as flight_number,
         Tail_Number as tail_number,
         Reporting_Airline as carrier_code,
+        IATA_CODE_Reporting_Airline as carrier_iata_code,
 
         -- date - the source of truth for all date logic, not
         -- source_year/source_month
