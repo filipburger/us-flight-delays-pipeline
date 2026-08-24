@@ -66,8 +66,10 @@ renamed_and_typed as (
         -- delay measures
         DepDelay as departure_delay_minutes,
         DepDel15 = 1 as departure_delayed_15,
+        DepartureDelayGroups as departure_delay_group_code,
         ArrDelay as arrival_delay_minutes,
         ArrDel15 = 1 as arrival_delayed_15,
+        ArrivalDelayGroups as arrival_delay_group_code,
 
         -- delay cause breakdown — populated only when
         -- arrival_delay_minutes >= 15, and only from June 2003 onward
