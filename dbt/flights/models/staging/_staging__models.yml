@@ -7,6 +7,10 @@ models:
         tests:
           - unique
           - not_null
+      - name: delayed_on_departure
+        description: True if departure delay >= 15 minutes (industry-standard threshold).
+      - name: delayed_on_arrival
+        description: True if arrival delay >= 15 minutes (industry-standard threshold).
       - name: flight_outcome
         description: >
           Cancellation timing derived from Cancelled/Diverted/DepTime/
@@ -22,8 +26,8 @@ models:
                         'cancelled_after_departure', 'cancelled_other']
       - name: delay_pattern
         description: >
-          Where delay originated, based on departure_delayed_15 and
-          arrival_delayed_15. Null for cancelled/diverted flights,
+          Where delay originated, based on delay_on_departure and
+          delayed on arrival. Null for cancelled/diverted flights,
           since arrival delay isn't meaningful for those.
         tests:
           - accepted_values:

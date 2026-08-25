@@ -27,10 +27,10 @@ select
     f.actual_arrival_time,
 
     f.departure_delay_minutes,
-    f.departure_delayed_15,
+    f.delayed_on_departure,
     f.departure_delay_group_code,
     f.arrival_delay_minutes,
-    f.arrival_delayed_15,
+    f.delayed_on_arrival,
     f.arrival_delay_group_code,
 
     f.carrier_delay_minutes,
@@ -44,6 +44,7 @@ select
     dcr.cancellation_reason,
     f.was_diverted,
     f.flight_outcome,
+    f.delay_pattern,
     f.final_diversion_airport,
 
     f.scheduled_elapsed_minutes,
