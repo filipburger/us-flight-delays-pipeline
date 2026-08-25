@@ -99,6 +99,24 @@ renamed_and_typed as (
             else 'completed'
         end as flight_outcome,
 
+        -- Delay pattern: where in the flight did delay originate,
+        -- based on the standard 15-minute delay threshold. Only
+        -- meaningful for completed flights — cancelled/diverted flights
+        -- have no reliable arrival_delay_minutes to compare against, so
+        -- they fall through to null rather than a misleading category.
+        case
+            when Cancelled = 1 or Diverted = 1
+                then null
+            when DepDel15 = 0 and ArrDel15 = 0
+                then 'on_time'
+            when DepDel15 = 1 and ArrDel15 = 0
+                then 'recovered_in_air'
+            when DepDel15 = 0 and ArrDel15 = 1
+                then 'delayed_in_air'
+            when DepDel15 = 1 and ArrDel15 = 1
+                then 'delayed_throughout'
+        end as delay_pattern,
+
         -- flight characteristics
         CRSElapsedTime as scheduled_elapsed_minutes,
         ActualElapsedTime as actual_elapsed_minutes,
