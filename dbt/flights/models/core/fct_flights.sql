@@ -15,6 +15,8 @@ select
     dc.carrier_name,
 
     f.flight_date,
+    f.flight_year,
+    f.flight_month,
 
     f.origin_airport,
     f.origin_state,
