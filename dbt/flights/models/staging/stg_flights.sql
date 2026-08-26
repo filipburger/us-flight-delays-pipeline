@@ -65,10 +65,10 @@ renamed_and_typed as (
 
         -- delay measures
         DepDelay as departure_delay_minutes,
-        DepDel15 = 1 as departure_delayed_15,
+        DepDel15 = 1 as delayed_on_departure,
         DepartureDelayGroups as departure_delay_group_code,
         ArrDelay as arrival_delay_minutes,
-        ArrDel15 = 1 as arrival_delayed_15,
+        ArrDel15 = 1 as delayed_on_arrival,
         ArrivalDelayGroups as arrival_delay_group_code,
 
         -- delay cause breakdown — populated only when
@@ -98,6 +98,24 @@ renamed_and_typed as (
                 then 'cancelled_other'
             else 'completed'
         end as flight_outcome,
+
+        -- Delay pattern: where in the flight did delay originate,
+        -- based on the standard 15-minute delay threshold. Only
+        -- meaningful for completed flights — cancelled/diverted flights
+        -- have no reliable arrival_delay_minutes to compare against, so
+        -- they fall through to null rather than a misleading category.
+        case
+            when Cancelled = 1 or Diverted = 1
+                then null
+            when DepDel15 = 0 and ArrDel15 = 0
+                then 'on_time'
+            when DepDel15 = 1 and ArrDel15 = 0
+                then 'recovered_in_air'
+            when DepDel15 = 0 and ArrDel15 = 1
+                then 'delayed_in_air'
+            when DepDel15 = 1 and ArrDel15 = 1
+                then 'delayed_throughout'
+        end as delay_pattern,
 
         -- flight characteristics
         CRSElapsedTime as scheduled_elapsed_minutes,

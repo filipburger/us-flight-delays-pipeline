@@ -7,6 +7,10 @@ models:
         tests:
           - unique
           - not_null
+      - name: delayed_on_departure
+        description: True if departure delay >= 15 minutes (industry-standard threshold).
+      - name: delayed_on_arrival
+        description: True if arrival delay >= 15 minutes (industry-standard threshold).
       - name: flight_outcome
         description: >
           Cancellation timing derived from Cancelled/Diverted/DepTime/
@@ -15,10 +19,24 @@ models:
           docs/data_quality_notes.md.
         tests:
           - accepted_values:
-              values: ['completed', 'diverted',
-                       'cancelled_before_pushback',
-                       'cancelled_after_pushback',
-                       'cancelled_after_departure', 'cancelled_other']
+              arguments:
+                values: ['completed', 'diverted',
+                        'cancelled_before_pushback',
+                        'cancelled_after_pushback',
+                        'cancelled_after_departure', 'cancelled_other']
+      - name: delay_pattern
+        description: >
+          Where delay originated, based on delay_on_departure and
+          delayed on arrival. Null for cancelled/diverted flights,
+          since arrival delay isn't meaningful for those.
+        tests:
+          - accepted_values:
+              arguments: 
+                values: ['on_time', 'recovered_in_air', 'delayed_in_air',
+                        'delayed_throughout']
+                config:
+                  where: "delay_pattern is not null"
+
 
   - name: stg_diversion_detail
     description: One row per diversion leg, unpivoted from Div1-5.
