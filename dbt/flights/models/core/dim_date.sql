@@ -56,6 +56,18 @@ enriched as (
                 then 'Autumn'
         end as season,
 
+        case
+            when extract(year from date_day) in (2018, 2019)
+                then 'pre_covid'
+            when extract(year from date_day) in (2020, 2021)
+                then 'covid'
+            when extract(year from date_day) in (2022, 2023)
+                then 'recovery'
+            when extract(year from date_day) in (2024, 2025)
+                then 'new_normal'
+            else null
+        end as travel_era,
+
         holiday_name,
         holiday_name is not null as is_holiday
 

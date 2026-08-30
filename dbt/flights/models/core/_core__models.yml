@@ -55,13 +55,13 @@ models:
         description: The calendar date. Primary key.
         tests:
           - unique
-          - not null
+          - not_null
       - name: year
         tests:
-          - not null
+          - not_null
       - name: month
         tests:
-          - not null
+          - not_null
       - name: month_name
         description: Full month name, e.g. "January".
       - name: day_of_month
@@ -113,6 +113,13 @@ models:
                         'cancelled_before_pushback',
                         'cancelled_after_pushback',
                         'cancelled_after_departure', 'cancelled_other']
+      - name: travel_era
+        description: >
+          pre_covid (2018-2019), covid (2020-2021), recovery
+          (2022-2023), new_normal (2024-2025). Null outside this
+          range — see "Dashboard eras" note for the reasoning behind
+          these boundaries, drawn from confirmed volume data rather
+          than assumption.
       - name: was_diverted
         description: True if flight actually diverted (per BTS Diverted flag).
       - name: distance_miles
@@ -163,4 +170,4 @@ seeds:
           - not_null
       - name: holiday_name
         tests:
-          - not null
+          - not_null

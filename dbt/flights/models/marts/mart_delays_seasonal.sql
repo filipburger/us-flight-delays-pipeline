@@ -18,6 +18,7 @@ flights_with_season as (
 
     select
         f.*,
+        d.travel_era,
         d.season,
         d.is_holiday
 
@@ -29,6 +30,7 @@ flights_with_season as (
 
 by_season as (
     select
+        travel_era,
         flight_year,
         season,
         is_holiday,
@@ -43,7 +45,7 @@ by_season as (
         avg(departure_delay_minutes) as avg_departure_delay_minutes
 
     from flights_with_season
-    group by 1, 2, 3
+    group by 1, 2, 3, 4
 
 )
 
