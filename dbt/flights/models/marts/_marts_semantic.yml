@@ -1,0 +1,25 @@
+# models/marts/_marts__semantic.yml — only the ratio metrics remain here
+metrics:
+  - name: cancellation_rate
+    label: Cancellation Rate
+    type: ratio
+    numerator: cancelled_flights
+    denominator: total_flights
+    description: >
+      Cancelled flights as % of all scheduled flights.
+
+  - name: delay_rate
+    label: Delay Rate
+    type: ratio
+    numerator: delayed_arrivals
+    denominator: completed_flights
+    description: >
+      Arrivals delayed 15+ minutes as % of completed flights.
+      
+models:
+  - name: metricflow_time_spine
+    time_spine:
+      standard_granularity_column: date_day
+    columns:
+      - name: date_day
+        granularity: day

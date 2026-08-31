@@ -1,0 +1,60 @@
+# models/marts/_marts__models.yml
+models:
+  - name: mart_delays_by_carrier
+    description: >
+      Monthly delay and cancellation counts by carrier. Rates are
+      computed as calculated fields in Data Studio
+      (SUM(numerator)/SUM(denominator)) rather than stored here — a
+      pre-computed percentage column does not re-aggregate correctly
+      across grains. See "Semantic layer" in docs/data_quality_notes.md.
+    columns:
+      - name: carrier_code
+        tests:
+          - not_null
+      - name: total_flights
+        description: All scheduled flights, including cancelled.
+      - name: cancelled_flights
+        description: Numerator for cancellation rate.
+      - name: completed_flights
+        description: Denominator for delay rate — cancelled flights excluded.
+      - name: delayed_arrivals
+        description: >
+          Arrivals delayed 15+ minutes (industry-standard threshold).
+          Numerator for delay rate.
+
+  - name: mart_delays_by_airport
+    description: >
+      Monthly delay and cancellation counts by airport, split by
+      departure/arrival direction.
+    columns:
+      - name: airport_code
+        tests:
+          - not_null
+      - name: direction
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['departure', 'arrival']
+
+  - name: mart_delays_seasonal
+    description: >
+      Delay and cancellation counts by year and season, with holiday
+      flag. Surfaces the COVID-era (2020-2021) volume collapse.
+    columns:
+      - name: flight_year
+        tests:
+          - not_null
+      - name: season
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Winter', 'Spring', 'Summer', 'Autumn']
+      - name: baseline_delay_rate
+        description: >
+          Pre-COVID (2018-2019) delay rate, joined onto every row for
+          "% change vs baseline" calculations. SUM(numerator)/SUM(denominator)
+          across the full baseline window, not an average of
+          per-season rates — see model comment for why that
+          distinction matters.
+      - name: baseline_cancellation_rate
+        description: Pre-COVID (2018-2019) cancellation rate, same pattern.

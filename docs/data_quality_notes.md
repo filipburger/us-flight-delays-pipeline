@@ -293,3 +293,54 @@ evidence of high air travel volume; pre/post-holiday travel also bleeds
 across multiple days in ways a single flagged date can't capture well.
 Computable later with the same nth-weekday logic as the federal holidays
 if reconsidered (4th Thursday of November + 1 day).
+
+## X. Semantic layer
+
+Defines `cancellation_rate`/`delay_rate` as governed ratio metrics via
+dbt's MetricFlow (`models/marts/_marts_semantic.yml`, `fct_flights`'s
+semantic model in `models/core/_core__models.yml`).
+
+Working end to end via `mf query` after resolving three issues tied to
+a recent MetricFlow YAML spec migration (dbt Core 1.12):
+`type_params` deprecated in favor of top-level keys, `measures`
+replaced by `type: simple` metrics nested under the model, and every
+semantic model requiring an explicit primary `entity` and
+`agg_time_dimension`/time-typed column. Requires
+`export DBT_PROFILES_DIR=~/.dbt` for the `mf` CLI to resolve the
+profile (not needed for regular `dbt` commands).
+
+Example: `mf query --metrics cancellation_rate --group-by carrier`
+groups by the entity's declared name, not the underlying column name
+(`carrier`, not `carrier_code`).
+
+```bash
+uv run mf query --metrics cancellation_rate --group-by carrier`
+✔ Success 🦄 - query completed after 2.71 seconds
+carrier      cancellation_rate
+---------  -------------------
+AS                   0.0161754
+AA                   0.0227447
+EV                   0.0405201
+QX                   0.0180023
+UA                   0.0159156
+B6                   0.0231836
+YX                   0.0310954
+DL                   0.0120892
+MQ                   0.0268134
+F9                   0.0224969
+OH                   0.0332789
+OO                   0.0183348
+WN                   0.0219358
+YV                   0.0341
+NK                   0.0215994
+9E                   0.0220424
+HA                   0.0103884
+G4                   0.0287556
+VX                   0.0245048
+```
+
+Not wired into the Data Studio dashboard — that requires dbt Cloud's
+semantic layer API, out of scope here — but demonstrates the correct
+governed-metric pattern: ratio metrics that re-aggregate correctly at
+any grain, unlike a pre-computed percentage column (the bug this
+avoided when building the dashboard).
