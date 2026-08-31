@@ -46,11 +46,5 @@ by_carrier_month as (
 
 )
 
-select
-    *,
-    round(safe_divide(cancelled_flights, total_flights) * 100, 2)
-        as cancellation_rate_pct,
-    round(safe_divide(delayed_arrivals, completed_flights) * 100, 2)
-        as delay_rate_pct
-
+select *
 from by_carrier_month
