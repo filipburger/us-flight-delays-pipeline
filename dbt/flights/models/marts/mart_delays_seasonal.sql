@@ -5,20 +5,20 @@
 
 with flights as (
 
-    select * from {{ ref("fct_flights") }}
+    select * from {{ ref('fct_flights') }}
 
 ),
 
 dates as (
 
     select * from {{ ref('dim_date') }}
+
 ),
 
 flights_with_season as (
 
     select
         f.*,
-        d.travel_era,
         d.season,
         d.is_holiday
 
@@ -29,13 +29,12 @@ flights_with_season as (
 ),
 
 by_season as (
+
     select
-        travel_era,
         flight_year,
         season,
         is_holiday,
 
-        -- metrics
         count(*) as total_flights,
         countif(flight_outcome = 'completed') as completed_flights,
         countif(flight_outcome like 'cancelled%') as cancelled_flights,
@@ -45,10 +44,28 @@ by_season as (
         avg(departure_delay_minutes) as avg_departure_delay_minutes
 
     from flights_with_season
-    group by 1, 2, 3, 4
+    group by 1, 2, 3
+
+),
+
+pre_covid_baseline as (
+
+    select
+        safe_divide(sum(delayed_arrivals), sum(completed_flights))
+            as baseline_delay_rate,
+        safe_divide(sum(cancelled_flights), sum(total_flights))
+            as baseline_cancellation_rate
+
+    from by_season
+    where flight_year in (2018, 2019)
 
 )
 
-select *
-from by_season
-order by flight_year, season, is_holiday
+select
+    s.*,
+    b.baseline_delay_rate,
+    b.baseline_cancellation_rate
+
+from by_season as s
+cross join pre_covid_baseline as b
+order by s.flight_year, s.season, s.is_holiday
