@@ -47,6 +47,7 @@ renamed_and_typed as (
         -- origin
         Origin as origin_airport,
         OriginAirportID as origin_airport_id,
+        OriginCityName as origin_city_name,
         OriginCityMarketID as origin_city_market_id,
         OriginState as origin_state,
 
@@ -54,6 +55,7 @@ renamed_and_typed as (
         Dest as destination_airport,
         DestAirportID as destination_airport_id,
         DestCityMarketID as destination_city_market_id,
+        DestCityName as destination_city_name,
         DestState as destination_state,
 
         -- scheduled vs actual — kept as raw HHMM ints; real timestamps
