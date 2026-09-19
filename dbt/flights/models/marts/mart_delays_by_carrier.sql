@@ -1,11 +1,20 @@
 -- Monthly delay and cancellation summary by carrier. Grain: one row
 -- per (carrier, year, month).
 --
--- Denominators: cancellation_rate_pct divides by all scheduled
--- flights (a cancellation is a real outcome of a scheduled flight).
--- delay_rate_pct divides by completed_flights only — a cancelled
--- flight was never "on time or late," so including it would
--- understate the rate.
+-- Rates are computed in the BI layer (SUM(numerator)/SUM(denominator))
+-- rather than stored here — pre-computed percentages don't re-aggregate
+-- correctly across grains.
+-- Denominator for cancellation rate: total_flights (all scheduled).
+-- Denominator for delay rate: completed_flights (cancelled excluded).
+--
+-- NOTE: avg delay columns are intentionally excluded. Storing averages
+-- at (carrier, year, month) grain makes it impossible to correctly
+-- aggregate to higher grains — summing or averaging those averages
+-- weights each month equally regardless of flight volume (July has
+-- significantly higher traffic than February).
+-- Always derive averages in the -- BI layer as 
+-- SUM(delay_minutes) / SUM(delayed_flights) so numerator and
+-- denominator scale together across any grain.
 
 with flights as (
 
@@ -36,15 +45,49 @@ by_carrier_month as (
         sum(if(delayed_on_arrival, arrival_delay_minutes, 0))
             as total_minutes_lost_to_delays,
 
-        avg(carrier_delay_minutes) as avg_carrier_delay_minutes,
-        avg(weather_delay_minutes) as avg_weather_delay_minutes,
-        avg(nas_delay_minutes) as avg_nas_delay_minutes,
-        avg(late_aircraft_delay_minutes) as avg_late_aircraft_delay_minutes
+        case
+            when flight_year in (2018, 2019)
+                then 'pre_covid'
+            when flight_year in (2020, 2021)
+                then 'covid'
+            when flight_year in (2022, 2023)
+                then 'recovery'
+            when flight_year in (2024, 2025)
+                then 'new_normal'
+        end as travel_era,
+
+        -- cancellation cause breakdown
+        countif(cancellation_code = 'A') as carrier_cancellations,
+        countif(cancellation_code = 'B') as weather_cancellations,
+        countif(cancellation_code = 'C') as nas_cancellations,
+        countif(cancellation_code = 'D') as security_cancellations,
+
+        -- delay cause breakdown
+        sum(carrier_delay_minutes) as carrier_delay_minutes,
+        sum(late_aircraft_delay_minutes) as late_aircraft_delay_minutes,
+        sum(weather_delay_minutes) as weather_delay_minutes,
+        sum(nas_delay_minutes) as nas_delay_minutes,
+        sum(security_delay_minutes) as security_delay_minutes
 
     from flights
     group by 1, 2, 3, 4
 
+),
+
+with_grand_total as (
+
+    -- Data Studio's built-in "% of total" comparison calculation returns
+    -- NULL on the synthetic "Other" row when a table groups the long
+    -- tail of carriers together — computing the grand total here
+    -- sidesteps that by making % of total a plain division on real
+    -- columns, which works for every row including "Other".
+    select
+        *,
+        sum(if(travel_era = 'new_normal', total_flights, 0)) over ()
+            as new_normal_grand_total_flights
+
+    from by_carrier_month
+
 )
 
-select *
-from by_carrier_month
+select * from with_grand_total

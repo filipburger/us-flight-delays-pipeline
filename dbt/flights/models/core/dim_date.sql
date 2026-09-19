@@ -65,7 +65,6 @@ enriched as (
                 then 'recovery'
             when extract(year from date_day) in (2024, 2025)
                 then 'new_normal'
-            else null
         end as travel_era,
 
         holiday_name,

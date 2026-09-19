@@ -252,3 +252,4 @@ data/
 *.parquet
 *.zip
 EOF
+.bruin.yml

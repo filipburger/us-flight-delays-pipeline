@@ -19,8 +19,10 @@ select
     f.flight_month,
 
     f.origin_airport,
+    f.origin_city_name,
     f.origin_state,
     f.destination_airport,
+    f.destination_city_name,
     f.destination_state,
 
     f.scheduled_departure_time,
