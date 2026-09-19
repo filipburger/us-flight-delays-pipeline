@@ -58,3 +58,5 @@ models:
           distinction matters.
       - name: baseline_cancellation_rate
         description: Pre-COVID (2018-2019) cancellation rate, same pattern.
+      - name: baseline_total_flights_per_year
+        description: Pre-COVID (2018-2019) average total flights per year.
