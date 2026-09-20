@@ -33,6 +33,7 @@ departures as (
         'departure' as direction,
         flight_year,
         flight_month,
+        date(flight_year, flight_month, 1) as flight_month_date,
 
         count(*) as total_flights,
         countif(flight_outcome = 'completed') as completed_flights,
@@ -40,7 +41,7 @@ departures as (
         countif(delayed_on_departure) as delayed_flights
 
     from flights
-    group by 1, 2, 3, 4, 5
+    group by 1, 2, 3, 4, 5, 6
 
 ),
 
@@ -52,6 +53,7 @@ arrivals as (
         'arrival' as direction,
         flight_year,
         flight_month,
+        date(flight_year, flight_month, 1) as flight_month_date,
 
         count(*) as total_flights,
         countif(flight_outcome = 'completed') as completed_flights,
@@ -59,7 +61,7 @@ arrivals as (
         countif(delayed_on_arrival) as delayed_flights
 
     from flights
-    group by 1, 2, 3, 4, 5
+    group by 1, 2, 3, 4, 5, 6
 
 ),
 
