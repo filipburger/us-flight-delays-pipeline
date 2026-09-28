@@ -1,0 +1,51 @@
+# Standalone semantic model for fct_flights at flight-leg grain.
+# Migrated from inline syntax in _core__models.yml for consistency
+# with _marts__semantic.yml pattern.
+
+semantic_models:
+  - name: flight_metrics
+    model: ref('fct_flights')
+    description: >
+      Semantic model over fct_flights at individual flight-leg grain.
+      Backs core rate metrics (cancellation_rate, delay_rate) and
+      provides base measures that mart-level semantic models also
+      reference.
+    defaults:
+      agg_time_dimension: flight_date
+
+    entities:
+      - name: flight_id
+        type: primary
+      - name: carrier
+        type: foreign
+        expr: carrier_code
+
+    dimensions:
+      - name: flight_date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: flight_outcome
+        type: categorical
+      - name: origin_airport
+        type: categorical
+      - name: destination_airport
+        type: categorical
+
+    measures:
+      - name: total_flights
+        agg: count
+        expr: flight_id
+        create_metric: true
+      - name: cancelled_flights
+        agg: sum
+        expr: "case when flight_outcome like 'cancelled%' then 1 else 0 end"
+        create_metric: true
+      - name: completed_flights
+        agg: sum
+        expr: "case when flight_outcome = 'completed' then 1 else 0 end"
+        create_metric: true
+      - name: delayed_arrivals
+        agg: sum
+        expr: "case when delayed_on_arrival then 1 else 0 end"
+        create_metric: true
