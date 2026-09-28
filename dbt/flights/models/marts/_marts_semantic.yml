@@ -1,0 +1,140 @@
+# models/marts/_marts__semantic.yml
+#
+# Ratio metrics verified against Data Studio outputs via `mf query`.
+# Not connected to a BI tool (requires dbt Cloud API) — documented
+# as portfolio demonstration of MetricFlow capability.
+#
+# All metrics are bound to the seasonal_metrics semantic model
+# (mart_delays_seasonal, year+month grain). Carrier and airport
+# level breakdowns live in Data Studio calculated fields.
+
+semantic_models:
+  - name: seasonal_metrics
+    model: ref('mart_delays_seasonal')
+    description: >
+      Semantic model over year-month grain seasonal mart. Backs
+      all rate, share, and average delay metrics.
+    defaults:
+      agg_time_dimension: flight_month_date
+
+    entities:
+      - name: year_month
+        type: primary
+        expr: flight_month_date
+
+    dimensions:
+      - name: flight_month_date
+        type: time
+        type_params:
+          time_granularity: month
+      - name: travel_era
+        type: categorical
+      - name: season
+        type: categorical
+
+    measures:
+      - name: total_flights
+        agg: sum
+      - name: completed_flights
+        agg: sum
+      - name: cancelled_flights
+        agg: sum
+      - name: delayed_arrivals
+        agg: sum
+
+      - name: carrier_cancellations
+        agg: sum
+        create_metric: true
+      - name: weather_cancellations
+        agg: sum
+        create_metric: true
+      - name: carrier_delay_minutes
+        agg: sum
+        create_metric: true
+      - name: late_aircraft_delay_minutes
+        agg: sum
+        create_metric: true
+      - name: delay_minutes_reason_total
+        agg: sum
+        create_metric: true
+
+metrics:
+  - name: cancellation_rate
+    label: Cancellation Rate
+    type: ratio
+    numerator:
+      name: cancelled_flights
+    denominator:
+      name: total_flights
+    description: >
+      Cancelled flights as % of all scheduled flights.
+      Denominator is total_flights (all scheduled including cancelled).
+
+  - name: delay_rate
+    label: Delay Rate
+    type: ratio
+    numerator:
+      name: delayed_arrivals
+    denominator:
+      name: completed_flights
+    description: >
+      Arrivals delayed 15+ minutes as % of completed flights.
+      Denominator excludes cancelled flights — a cancelled flight
+      is neither on-time nor late.
+
+  - name: average_delay
+    label: Average Delay Minutes per Flight
+    type: ratio
+    numerator:
+      name: delay_minutes_reason_total
+    denominator:
+      name: total_flights
+    description: >
+      Total attributable delay minutes divided by all scheduled
+      flights. Uses delay_minutes_reason_total (sum of cause columns)
+      as numerator — consistent with cause breakdown charts.
+      Flights with no reported cause contribute zero to the numerator.
+
+  - name: carrier_cancellation_share
+    label: Carrier Cancellation Share
+    type: ratio
+    numerator:
+      name: carrier_cancellations
+    denominator:
+      name: cancelled_flights
+    description: >
+      Carrier-caused cancellations as % of all cancellations.
+      Excludes weather, NAS, and security categories.
+
+  - name: weather_cancellation_share
+    label: Weather Cancellation Share
+    type: ratio
+    numerator:
+      name: weather_cancellations
+    denominator:
+      name: cancelled_flights
+    description: >
+      Weather-caused cancellations as % of all cancellations.
+
+  - name: carrier_delay_share
+    label: Carrier Delay Minutes Share
+    type: ratio
+    numerator:
+      name: carrier_delay_minutes
+    denominator:
+      name: delay_minutes_reason_total
+    description: >
+      Carrier-caused delay minutes as % of total attributable
+      delay minutes. Excludes flights with no cause reported.
+
+  - name: late_aircraft_delay_share
+    label: Late Aircraft Delay Minutes Share
+    type: ratio
+    numerator:
+      name: late_aircraft_delay_minutes
+    denominator:
+      name: delay_minutes_reason_total
+    description: >
+      Late-aircraft delay minutes as % of total attributable
+      delay minutes — measures cascade propagation through
+      the network.
