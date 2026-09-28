@@ -29,6 +29,7 @@ by_carrier_month as (
         carrier_name,
         flight_year,
         flight_month,
+        date(flight_year, flight_month, 1) as flight_month_date,
 
         count(*) as total_flights,
         countif(flight_outcome = 'completed') as completed_flights,
@@ -70,7 +71,7 @@ by_carrier_month as (
         sum(security_delay_minutes) as security_delay_minutes
 
     from flights
-    group by 1, 2, 3, 4
+    group by 1, 2, 3, 4, 5
 
 ),
 

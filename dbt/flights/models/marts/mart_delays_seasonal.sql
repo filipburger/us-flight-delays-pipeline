@@ -48,6 +48,7 @@ by_season as (
         flight_year,
         season,
         year_month,
+        date(flight_year, flight_month, 1) as flight_month_date,
 
         count(*) as total_flights,
         countif(flight_outcome = 'completed') as completed_flights,
@@ -73,7 +74,7 @@ by_season as (
         countif(cancellation_code = 'D') as security_cancellations
 
     from flights_with_season
-    group by 1, 2, 3
+    group by 1, 2, 3, 4
 
 ),
 
