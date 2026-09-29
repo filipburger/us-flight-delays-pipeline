@@ -1,0 +1,17 @@
+# airflow/config/dbt_profiles.yml
+# Used by dbt inside the Airflow container only.
+# Reuses the airflow-runner service account for simplicity.
+# A dedicated dbt-runner SA exists for local dev (see ~/.dbt/profiles.yml).
+
+flights:
+  target: prod
+  outputs:
+    prod:
+      type: bigquery
+      method: service-account
+      project: de-zoomcamp-499310
+      keyfile: /opt/airflow/config/gcp-credentials.json
+      dataset: flights
+      location: us-central1
+      threads: 4
+      timeout_seconds: 300
