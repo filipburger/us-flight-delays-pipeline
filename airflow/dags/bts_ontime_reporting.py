@@ -8,6 +8,7 @@ import pandas as pd
 import requests
 import urllib3
 from airflow.sdk import dag, task
+from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 from airflow.providers.google.cloud.hooks.gcs import GCSHook
 from pendulum import DateTime
 
@@ -62,7 +63,7 @@ def build_url(year: int, month: int) -> str:
     return BASE_URL.format(year=year, month=month)
 
 
-def validate_and_clean_columns(df: pd.DataFrame, year, month):
+def validate_and_clean_columns(df: pd.DataFrame, year, month) -> pd.DataFrame:
     """Non judgmental clean up of phantom column caused by trailing comma in source file
     + validate columns agains expected schema"""
     df = df.drop(columns=[c for c in df.columns if c.startswith("Unnamed:")])
@@ -120,7 +121,7 @@ def annotate_columns(df: pd.DataFrame, year: int, month: int) -> pd.DataFrame:
 )
 def bts_ontime_reporting():
     @task.short_circuit
-    def check_availability(logical_date: DateTime = None) -> bool:  # type: ignore[arg-type]
+    def check_availability(logical_date: DateTime = None) -> bool:
         """Return False (skipping everything downstream) if BTS hasn't published this month yet."""
         url = BASE_URL.format(year=logical_date.year, month=logical_date.month)
 
@@ -137,7 +138,7 @@ def bts_ontime_reporting():
         return available
 
     @task
-    def ingest_month(logical_date: DateTime = None) -> str:  # type: ignore[arg-type]
+    def ingest_month(logical_date: DateTime = None) -> str:
         """Download the month's zip, convert to parquet in memory, upload to GCS.
 
         Kept as a single task with an in-memory buffer rather than writing to
@@ -146,31 +147,20 @@ def bts_ontime_reporting():
         """
         year, month = logical_date.year, logical_date.month
 
-        # Hive-style partitioning (key=value). BigQuery parses these directory
-        # names into `year`/`month` columns and prunes partitions on them, so a
-        # filtered query reads one file instead of the whole prefix. Zero-padded
-        # so listings sort chronologically rather than 1, 10, 11, 2.
-        # added source_ prefix to distuinguish from flight's year and month
-        # available in data set, should ve 100%, but comparing these two
-        # will help us test data quality
         object_name = f"{GCS_PREFIX}/source_year={year}/source_month={month:02d}/data.parquet"
         hook = GCSHook(gcp_conn_id="google_cloud_default")
 
-        # Idempotency: backfills get re-run, don't re-download/upload what's already there
         if hook.exists(bucket_name=GCS_BUCKET, object_name=object_name):
             log.info("Already in GCS, skipping upload %s", object_name)
             return object_name
 
-        # download, apply schema, clean up, annotate
         df = download_and_extract_csv(year, month)
         df = annotate_columns(df, year, month)
 
-        # write to buffer memory
         buffer = io.BytesIO()
         df.to_parquet(buffer, engine="pyarrow", compression="snappy", index=False)
         log.info("Wrote %s rows x %s cols to buffer memory", len(df), len(df.columns))
 
-        # to free up memory
         del df
         gc.collect()
 
@@ -183,7 +173,39 @@ def bts_ontime_reporting():
         log.info("Uploaded → gs://%s/%s", GCS_BUCKET, object_name)
         return object_name
 
-    check_availability() >> ingest_month()
+    @task.short_circuit
+    def should_trigger_dbt(**context):
+        """Skip dbt trigger when run with conf skip_dbt=true.
+
+        Normal monthly runs trigger dbt automatically. During backfills
+        pass skip_dbt=true to avoid redundant builds, then trigger
+        dbt_build manually once the backfill completes:
+
+            airflow dags backfill bts_ontime_reporting \\
+                --start-date 2018-01-01 \\
+                --end-date 2025-12-01 \\
+                --conf '{"skip_dbt": true}'
+
+            airflow dags trigger dbt_build
+        """
+        skip = context["dag_run"].conf.get("skip_dbt", False)
+        if skip:
+            log.info("skip_dbt=true — skipping dbt trigger")
+            return False
+        return True
+
+    trigger_dbt = TriggerDagRunOperator(
+        task_id="trigger_dbt_build",
+        trigger_dag_id="dbt_build",
+        wait_for_completion=False,
+    )
+
+    (
+        check_availability() 
+        >> ingest_month() 
+        >> should_trigger_dbt() 
+        >> trigger_dbt
+    )
 
 
 bts_ontime_reporting()
