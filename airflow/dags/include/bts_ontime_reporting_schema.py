@@ -18,14 +18,12 @@ BTS_ONTIME_REPORTING_DTYPES = {
     "DayofMonth": "Int8",
     "DayOfWeek": "Int8",
     "FlightDate": "string",  # cast to date in dbt — avoids tz/format assumptions at ingestion
-
     # Carrier identifiers
     "Reporting_Airline": "string",
     "DOT_ID_Reporting_Airline": "Int32",
     "IATA_CODE_Reporting_Airline": "string",
     "Tail_Number": "string",
     "Flight_Number_Reporting_Airline": "Int32",
-
     # Origin
     "OriginAirportID": "Int32",
     "OriginAirportSeqID": "Int32",
@@ -36,7 +34,6 @@ BTS_ONTIME_REPORTING_DTYPES = {
     "OriginStateFips": "string",
     "OriginStateName": "string",
     "OriginWac": "Int16",
-
     # Destination — same shape as Origin
     "DestAirportID": "Int32",
     "DestAirportSeqID": "Int32",
@@ -47,7 +44,6 @@ BTS_ONTIME_REPORTING_DTYPES = {
     "DestStateFips": "string",
     "DestStateName": "string",
     "DestWac": "Int16",
-
     # Departure performance — HHMM kept as int; real timestamp math is dbt's job
     "CRSDepTime": "Int32",
     "DepTime": "Int32",
@@ -58,7 +54,6 @@ BTS_ONTIME_REPORTING_DTYPES = {
     "DepTimeBlk": "string",
     "TaxiOut": "float32",
     "WheelsOff": "Int32",
-
     # Arrival performance
     "WheelsOn": "Int32",
     "TaxiIn": "float32",
@@ -69,12 +64,10 @@ BTS_ONTIME_REPORTING_DTYPES = {
     "ArrDel15": "Int8",
     "ArrivalDelayGroups": "Int8",
     "ArrTimeBlk": "string",
-
     # Cancellation / diversion (summary) — 0/1 in source, cast to boolean in dbt
     "Cancelled": "Int8",
     "CancellationCode": "string",
     "Diverted": "Int8",
-
     # Duration & distance
     "CRSElapsedTime": "float32",
     "ActualElapsedTime": "float32",
@@ -82,19 +75,16 @@ BTS_ONTIME_REPORTING_DTYPES = {
     "Flights": "Int8",
     "Distance": "float32",
     "DistanceGroup": "Int8",
-
     # Delay cause breakdown — only populated when delay >= 15 min, ~77% null by design
     "CarrierDelay": "float32",
     "WeatherDelay": "float32",
     "NASDelay": "float32",
     "SecurityDelay": "float32",
     "LateAircraftDelay": "float32",
-
     # Gate return / cancelled flight ground time
     "FirstDepTime": "Int32",
     "TotalAddGTime": "float32",
     "LongestAddGTime": "float32",
-
     # Diversion detail (summary)
     "DivAirportLandings": "Int8",
     "DivReachedDest": "Int8",
@@ -118,4 +108,3 @@ for _n in range(1, 6):
             f"Div{_n}TailNum": "string",
         }
     )
-    

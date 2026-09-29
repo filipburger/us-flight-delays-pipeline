@@ -147,7 +147,9 @@ def bts_ontime_reporting():
         """
         year, month = logical_date.year, logical_date.month
 
-        object_name = f"{GCS_PREFIX}/source_year={year}/source_month={month:02d}/data.parquet"
+        object_name = (
+            f"{GCS_PREFIX}/source_year={year}/source_month={month:02d}/data.parquet"
+        )
         hook = GCSHook(gcp_conn_id="google_cloud_default")
 
         if hook.exists(bucket_name=GCS_BUCKET, object_name=object_name):
@@ -200,12 +202,7 @@ def bts_ontime_reporting():
         wait_for_completion=False,
     )
 
-    (
-        check_availability() 
-        >> ingest_month() 
-        >> should_trigger_dbt() 
-        >> trigger_dbt
-    )
+    (check_availability() >> ingest_month() >> should_trigger_dbt() >> trigger_dbt)
 
 
 bts_ontime_reporting()
