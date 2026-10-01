@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="100%"
+   viewBox="0 0 680 540"
+   role="img"
+   style=""
+   version="1.1"
+   id="svg30"
+   sodipodi:docname="architecture.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:c2pa="http://c2pa.org/manifest">
+  <sodipodi:namedview
+     id="namedview30"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:connector-spacing="11"
+     inkscape:zoom="0.77454382"
+     inkscape:cx="406.04546"
+     inkscape:cy="328.58051"
+     inkscape:window-width="1304"
+     inkscape:window-height="912"
+     inkscape:window-x="1254"
+     inkscape:window-y="167"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg30" />
+  <metadata
+     id="metadata1">
+    <c2pa:manifest>AAAWkGp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZqanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYToyNmZkMmFlNi03MWJlLTQ4NTctOGNhZC02OTYzMTUzMjE1YWIAAAADf2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaHyUG5fFUPavKVBx6YIZXB4AAABwY2JvcqNscmVsYXRpb25zaGlwaHBhcmVudE9maWRjOmZvcm1hdG1pbWFnZS9zdmcreG1samluc3RhbmNlSUR4LHhtcDppaWQ6OTFjYTMyZWUtMjRkZi00MGY0LWE4YjMtZjBiM2QyNTI3NjkxAAABzmp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoZxDy2Y+mrLg19rxNgNO6NAAAAYVjYm9yoWdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggaunhWi/eOfosur2JwIc81iPPg5/9U6Vf7OLSdEhk1mOkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRtc29mdHdhcmVBZ2VudKFkbmFtZWZDbGF1ZGVqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMuAAAAxGp1bWIAAABAanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5oYXNoLmRhdGEAAAAAGGMyc2irSRbtEFj8tZxRad6QdCFgAAAAfGNib3KlamV4Y2x1c2lvbnOBomVzdGFydBieZmxlbmd0aBkeGGRuYW1lbmp1bWJmIG1hbmlmZXN0Y2FsZ2ZzaGEyNTZkaGFzaFgghogyh08gbAvtTM1kOlfrbLtOMyUNSy7Q2oORDODl96NjcGFkSQAAAAAAAAAAAAAAAmRqdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACNWNib3Kmamluc3RhbmNlSUR4LHhtcDppaWQ6OTAyMWJkZmEtYjE1Yy00YjExLWI1OWYtN2E4MTVlZDE2MTE1dGNsYWltX2dlbmVyYXRvcl9pbmZvo2RuYW1lc0FudGhyb3BpYyBDbGF1ZGUuYWlndmVyc2lvbmUxLjAuMHdvcmcuY29udGVudGF1dGguYzJwYV9yc2YwLjkwLjBpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjI2ZmQyYWU2LTcxYmUtNDg1Ny04Y2FkLTY5NjMxNTMyMTVhYi9jMnBhLnNpZ25hdHVyZXJjcmVhdGVkX2Fzc2VydGlvbnOComN1cmx4KnNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuYWN0aW9ucy52MmRoYXNoWCBaiZeCTeWtyMo93SJezoJJRN/in5DrcXMn89E8RM0CSKJjdXJseClzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmhhc2guZGF0YWRoYXNoWCAlvBEnzT6kujOPIhZGD82qx/vTt0ON6JUUsx+dS9SReXNnYXRoZXJlZF9hc3NlcnRpb25zgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggaunhWi/eOfosur2JwIc81iPPg5/9U6Vf7OLSdEhk1mNjYWxnZnNoYTI1NgAAEDhqdW1iAAAAKGp1bWRjMmNzABEAEIAAAKoAOJtxA2MycGEuc2lnbmF0dXJlAAAAEAhjYm9y0oRZAhKiASYYIVkCCjCCAgYwggGNoAMCAQICFEDloAruwjnQvriD+gZCBT1nVRMAMAoGCCqGSM49BAMDMEkxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMS4wLAYDVQQDEyVBbnRocm9waWMgQ29udGVudCBDcmVkZW50aWFscyBSb290IENBMB4XDTI2MDgwNzE4NDM1NloXDTI4MDgwNjE5NDM1NlowRDEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxKTAnBgNVBAMTIEFudGhyb3BpYyBDbGF1ZGUgQ29udGVudCBTaWduaW5nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEmHoKa8tQGAUU1TS9QqU5W0Tp2N3XsvlK7BfQt6YWKwEzd2R3/dzKPEUDdCjlLjp9fT+KFjRVnuZ9v0oXvTe3k6NYMFYwDgYDVR0PAQH/BAQDAgeAMBUGA1UdJQQOMAwGCisGAQQBg+heAgEwDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBTOUeIEgU5kWyP448TPmj6cwddcwjAKBggqhkjOPQQDAwNnADBkAjAxcx0UngF60stVjs5G4T2eiptsBk5mf9oCtfJPAUBl8qs/PEXa8+gk1/X5QJ2DVcYCMHBfXN31YapiSqYvlIWrDVDJKOvXMl+kkz37Wt0PBI8sw486Mq6JeOhT+lRR4b1HCaFjcGFkWQ2eAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9lhAZcaW7FgKSrgz5vXLWMZyIuUNfks08sGek+sTQS6AqkBD+GGg8A1tfqc8qH3oG85zV4oVOfcKk2+9PtABhTdHeQ==</c2pa:manifest>
+  </metadata>
+  <title
+     style="fill:rgb(0, 0, 0);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:anthropic-sans, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"
+     id="title1">US flight delays pipeline architecture</title>
+  <desc
+     style="fill:rgb(0, 0, 0);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:anthropic-sans, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"
+     id="desc1">End-to-end data pipeline: BTS source data flows through Airflow ingestion into GCS data lake, then into BigQuery where dbt transforms it through staging, core, and mart layers, finally served to a Data Studio dashboard.</desc>
+  <defs
+     id="defs1">
+    <marker
+       id="arrow"
+       viewBox="0 0 10 10"
+       refX="8"
+       refY="5"
+       markerWidth="6"
+       markerHeight="6"
+       orient="auto-start-reverse">
+      <path
+         d="M2 1L8 5L2 9"
+         fill="none"
+         stroke="context-stroke"
+         stroke-width="1.5"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         id="path1" />
+    </marker>
+  </defs>
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g2"
+     transform="translate(-3.5887226e-7,73.591707)">
+    <rect
+       x="40"
+       y="40"
+       width="90"
+       height="56"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#eaf3de;stroke:#3b6d11;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect1" />
+    <text
+       x="85"
+       y="60"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:500;font-size:14px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#27500a;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text1">BTS</text>
+    <text
+       x="85"
+       y="78"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#3b6d11;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text2">Flight data</text>
+  </g>
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g4"
+     transform="translate(1.2910826,-65.845209)">
+    <rect
+       x="40"
+       y="120"
+       width="90"
+       height="56"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#eaf3de;stroke:#3b6d11;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect2" />
+    <text
+       x="85"
+       y="140"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:500;font-size:14px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#27500a;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text3">BTS</text>
+    <text
+       x="85"
+       y="158"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#3b6d11;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text4">Lookups</text>
+  </g>
+  <line
+     x1="131.29108"
+     y1="79.619743"
+     x2="159.29108"
+     y2="79.619743"
+     marker-end="url(#arrow)"
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#898781;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="line4" />
+  <line
+     x1="130"
+     y1="138.96242"
+     x2="158"
+     y2="138.96242"
+     marker-end="url(#arrow)"
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#898781;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="line5" />
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g5"
+     transform="matrix(0.99993678,0,0,1.0455875,0.01574254,-10.217226)">
+    <rect
+       x="160"
+       y="26"
+       width="178"
+       height="198"
+       rx="12"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#faece7;stroke:#993c1d;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect5" />
+    <text
+       x="247.70883"
+       y="36.886875"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:500;font-size:14px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#712b13;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan35"
+         x="247.70883"
+         y="36.886875">Airflow </tspan><tspan
+         sodipodi:role="line"
+         id="tspan36"
+         x="247.70883"
+         y="54.386875">(ingestion + dbt)</tspan></text>
+  </g>
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g6"
+     transform="translate(1.2910825,59.389797)">
+    <rect
+       x="172"
+       y="58"
+       width="154"
+       height="36"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#faece7;stroke:#993c1d;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect6" />
+    <text
+       x="249"
+       y="76"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#993c1d;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text6">bts_ontime_reporting</text>
+  </g>
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g7"
+     transform="translate(-1.2910825,-38.732476)">
+    <rect
+       x="172"
+       y="106"
+       width="154"
+       height="36"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#faece7;stroke:#993c1d;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect7" />
+    <text
+       x="249"
+       y="124"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#993c1d;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text7">bts_lookups</text>
+  </g>
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g8"
+     transform="translate(0,18.075155)">
+    <rect
+       x="172"
+       y="154"
+       width="154"
+       height="36"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#faece7;stroke:#993c1d;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect8" />
+    <text
+       x="249"
+       y="172"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#993c1d;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text8">dbt_build</text>
+  </g>
+  <text
+     x="222.91083"
+     y="164.78407"
+     opacity="0.5"
+     style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.5;fill:#52514e;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="text9">triggers ↓</text>
+  <line
+     x1="339.29108"
+     y1="87.619743"
+     x2="371.29108"
+     y2="87.619743"
+     marker-end="url(#arrow)"
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#898781;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="line9" />
+  <line
+     x1="339.29108"
+     y1="135.61974"
+     x2="371.29108"
+     y2="135.61974"
+     marker-end="url(#arrow)"
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#898781;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="line10" />
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g10"
+     transform="translate(-4.1127707e-8,3.8732478)">
+    <rect
+       x="372"
+       y="26"
+       width="136"
+       height="152"
+       rx="12"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#e6f1fb;stroke:#185fa5;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect10" />
+    <text
+       x="440"
+       y="48"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:500;font-size:14px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#0c447c;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text10">GCS data lake</text>
+  </g>
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g12"
+     transform="translate(-1.2910826,59.389797)">
+    <rect
+       x="384"
+       y="58"
+       width="112"
+       height="44"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#e6f1fb;stroke:#185fa5;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect11" />
+    <text
+       x="440"
+       y="74"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#185fa5;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text11">Hive-partitioned</text>
+    <text
+       x="440"
+       y="90"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#185fa5;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text12">parquet</text>
+  </g>
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g13"
+     transform="translate(-1.2910826,-45.187889)">
+    <rect
+       x="384"
+       y="114"
+       width="112"
+       height="36"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#e6f1fb;stroke:#185fa5;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect12" />
+    <text
+       x="440"
+       y="132"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#185fa5;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text13">Lookup parquet</text>
+  </g>
+  <line
+     x1="440"
+     y1="181.87325"
+     x2="440"
+     y2="248.02541"
+     marker-end="url(#arrow)"
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#898781;stroke-width:1.45819px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="line13" />
+  <text
+     x="450"
+     y="218"
+     opacity="0.5"
+     style="fill:#979591;stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:anthropic-sans, -apple-system, 'system-ui', 'Segoe UI', sans-serif;font-size:12px;font-weight:400;text-anchor:start;dominant-baseline:auto;fill-opacity:1"
+     id="text14">external tables</text>
+  <path
+     d="m 248.84362,208.18191 v 27.51985 h 91.30043 v 12.38391"
+     fill="none"
+     marker-end="url(#arrow)"
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#898781;stroke-width:1.24623px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="path14" />
+  <g
+     style="fill:rgb(0, 0, 0);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:anthropic-sans, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"
+     id="g16">
+    <rect
+       x="60"
+       y="250"
+       width="560"
+       height="180"
+       rx="16"
+       stroke-width="0.5"
+       style="fill:rgb(241, 239, 232);stroke:rgb(95, 94, 90);color:rgb(11, 11, 11);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:anthropic-sans, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"
+       id="rect15" />
+    <text
+       x="340"
+       y="274"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="fill:rgb(68, 68, 65);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:anthropic-sans, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central"
+       id="text16">BigQuery</text>
+  </g>
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g18"
+     transform="translate(-6.4554127,16.784073)">
+    <rect
+       x="80"
+       y="292"
+       width="106"
+       height="44"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#faeeda;stroke:#854f0b;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect16" />
+    <text
+       x="133"
+       y="308"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:500;font-size:14px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#633806;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text17">raw_bts</text>
+    <text
+       x="133"
+       y="326"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#854f0b;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text18">External tables</text>
+  </g>
+  <line
+     x1="179.54459"
+     y1="329.49298"
+     x2="204.46423"
+     y2="329.49298"
+     marker-end="url(#arrow)"
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#898781;stroke-width:1.3671px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="line18" />
+  <rect
+     x="208"
+     y="282"
+     width="398"
+     height="136"
+     rx="12"
+     fill="none"
+     stroke="var(--border-strong)"
+     stroke-width="0.5"
+     stroke-dasharray="4 3"
+     style="fill:none;stroke:color(srgb 0.0431373 0.0431373 0.0431373 / 0.2);color:rgb(11, 11, 11);stroke-width:0.5px;stroke-dasharray:4px, 3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:anthropic-sans, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"
+     id="rect18" />
+  <text
+     x="474.13629"
+     y="295.41785"
+     text-anchor="middle"
+     opacity="0.5"
+     style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:middle;opacity:0.5;fill:#52514e;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="text19">dbt transformations</text>
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g21"
+     transform="translate(-10.32866)">
+    <rect
+       x="218"
+       y="306"
+       width="108"
+       height="44"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#e1f5ee;stroke:#0f6e56;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect19" />
+    <text
+       x="272"
+       y="322"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:500;font-size:14px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#085041;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text20">staging</text>
+    <text
+       x="272"
+       y="340"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#0f6e56;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text21">Views, cleaning</text>
+  </g>
+  <line
+     x1="316.96243"
+     y1="328"
+     x2="346.96243"
+     y2="328"
+     marker-end="url(#arrow)"
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#898781;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="line21" />
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g23"
+     transform="matrix(1.0357941,0,0,0.99979975,-21.848129,0.06568383)">
+    <rect
+       x="358"
+       y="306"
+       width="108"
+       height="44"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#e1f5ee;stroke:#0f6e56;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect21" />
+    <text
+       x="412"
+       y="322"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:500;font-size:14px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#085041;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text22">core</text>
+    <text
+       x="412"
+       y="340"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:10.48179099px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#0f6e56;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text23">Dims + fct_flights</text>
+  </g>
+  <line
+     x1="462.12674"
+     y1="328"
+     x2="492.12674"
+     y2="328"
+     marker-end="url(#arrow)"
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#898781;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="line23" />
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g25"
+     transform="translate(-2.5821651)">
+    <rect
+       x="498"
+       y="306"
+       width="96"
+       height="44"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#e1f5ee;stroke:#0f6e56;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect23" />
+    <text
+       x="546"
+       y="322"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:500;font-size:14px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#085041;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text24">marts</text>
+    <text
+       x="546"
+       y="340"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#0f6e56;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text25">Delay analysis</text>
+  </g>
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#9f9f9f;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:4, 0.5;stroke-dashoffset:0;stroke-opacity:1"
+     d="m 548.5,350.58217 v 16.78408"
+     id="path34-1"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="4" />
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g26"
+     transform="matrix(2.313043,0,0,0.9928483,-163.48531,5.3284347)">
+    <rect
+       x="218"
+       y="366"
+       width="108"
+       height="36"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#eeedfe;stroke:#534ab7;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect25" />
+  </g>
+  <line
+     x1="546"
+     y1="430"
+     x2="546"
+     y2="465.35257"
+     marker-end="url(#arrow)"
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#898781;stroke-width:1.48645px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="line27" />
+  <g
+     style="fill:rgb(0, 0, 0);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:anthropic-sans, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"
+     id="g27">
+    <rect
+       x="466"
+       y="468"
+       width="154"
+       height="44"
+       rx="8"
+       stroke-width="0.5"
+       style="fill:rgb(251, 234, 240);stroke:rgb(153, 53, 86);color:rgb(11, 11, 11);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:anthropic-sans, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"
+       id="rect27" />
+    <text
+       x="543"
+       y="490"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="fill:rgb(114, 36, 62);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:anthropic-sans, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central"
+       id="text27">Data Studio</text>
+  </g>
+  <g
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g28"
+     transform="translate(481.57379,-320.18847)">
+    <rect
+       x="60"
+       y="468"
+       width="120"
+       height="36"
+       rx="8"
+       stroke-width="0.5"
+       style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#f1efe8;stroke:#5f5e5a;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect28" />
+    <text
+       x="120"
+       y="486"
+       text-anchor="middle"
+       dominant-baseline="central"
+       style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#5f5e5a;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text28">Terraform (IaC)</text>
+  </g>
+  <line
+     x1="568.67474"
+     y1="249.70329"
+     x2="607.59454"
+     y2="184.72293"
+     style="color:#0b0b0b;font-weight:400;font-size:16px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#898781;stroke-width:0.613467px;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:4.90774, 0.613467;stroke-dashoffset:0"
+     id="line28" />
+  <text
+     x="590.18787"
+     y="38.380257"
+     text-anchor="middle"
+     opacity="0.4"
+     style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:middle;opacity:0.4;fill:#979591;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;fill-opacity:1"
+     id="text29">55M+ flight records</text>
+  <text
+     x="582.44141"
+     y="53.671341"
+     text-anchor="middle"
+     opacity="0.4"
+     style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:middle;opacity:0.4;fill:#979591;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;fill-opacity:1"
+     id="text30">2018–2025</text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;-inkscape-font-specification:'anthropic-sans, -apple-system, system-ui, Segoe UI, sans-serif';writing-mode:lr-tb;direction:ltr;fill:#000080"
+     x="380.86932"
+     y="388.61588"
+     id="text33"><tspan
+       sodipodi:role="line"
+       id="tspan32"
+       x="380.86932"
+       y="388.61588">MetricFlow semantic layer</tspan></text>
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#9f9f9f;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:4, 0.5;stroke-dashoffset:0;stroke-opacity:1"
+     d="m 405.39992,351.17445 v 16.78408"
+     id="path34"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="4" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#8b8b8b;stroke-width:0.48689;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:3.89512, 0.48689;stroke-dashoffset:0;stroke-opacity:1"
+     d="m 511.26726,100.70043 94.25188,45.19591"
+     id="path35"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <text
+     x="82.80307"
+     y="194.68279"
+     text-anchor="middle"
+     opacity="0.4"
+     style="color:#0b0b0b;font-weight:400;font-size:12px;font-family:anthropic-sans, '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:middle;opacity:0.4;fill:#979591;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;fill-opacity:1"
+     id="text29-6">www.transtats.bts.gov</text>
+</svg>
