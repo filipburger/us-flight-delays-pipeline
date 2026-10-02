@@ -261,6 +261,11 @@ Partition keys are named `source_year` / `source_month` (not `Year` / `Month`)
 to avoid colliding with BTS's own columns of the same name — see
 [data quality notes §3](docs/data_quality_notes.md#3-provenance-vs-source-columns).
 
+- **Partitioning:** `fct_flights` is partitioned by `flight_date` (month
+  granularity, ~150 MB per partition). Dimension and mart tables are
+  intentionally unpartitioned — dimensions are small reference data, and marts
+  already pre-aggregate by the dimensions that would otherwise be clustered on
+
 ---
 
 ## Setup
@@ -317,6 +322,12 @@ gcloud iam service-accounts keys create airflow/config/gcp-credentials.json \
 ```
 
 > `airflow/config/gcp-credentials.json` is gitignored and must be generated locally.
+
+> dbt runs inside the Airflow container and reuses the `airflow-runner` SA
+> credentials (see `airflow/config/dbt_profiles.yml`). For local development,
+> create a dedicated `dbt-runner` SA and configure it in `~/.dbt/profiles.yml`
+> (not committed to the repo). In production these would be separate SAs with
+> least-privilege roles.
 
 ### 4. Start Airflow
 
