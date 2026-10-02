@@ -1,9 +1,18 @@
+{{ config(
+    materialized='table',
+    partition_by={
+      "field": "flight_date",
+      "data_type": "date",
+      "granularity": "month"
+    }
+) }}
+
 -- One flow per operated flight leg. Grain matches stg_flights.
 --
--- all dimension joins LEFT JOIN not INNER - cancellation code and 
+-- all dimension joins LEFT JOIN not INNER - cancellation code and
 -- the delay group codes are null for majority of flights (only
 -- populated when cancelled / delayed respectively), and an INNER JOIN
--- would silently drop every flight missing that attribute. 
+-- would silently drop every flight missing that attribute.
 
 select
     --identifiers
