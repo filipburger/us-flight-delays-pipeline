@@ -19,29 +19,27 @@ GCS_PREFIX = "raw/bts_lookups"
 # Lookup tables that resolve doded columns in the on-time fact table.
 # Most are simpel Code/Descroption pairs.
 LOOKUP_TABLES = [
-    # Time
-    "L_QUARTERS",  # Quarter
-    "L_MONTHS",  # Month
-    "L_WEEKDAYS",  # DayOfWeek
-    # Carrier
-    "L_UNIQUE_CARRIERS",  # Reporting_Airline
-    "L_AIRLINE_ID",  # DOT_ID_Reporting_Airline
-    "L_CARRIER_HISTORY",  # IATA_CODE_Reporting_Airline
-    # Geography
-    "L_AIRPORT",  # Origin / Dest
-    "L_AIRPORT_ID",  # OriginAirportID / DestAirportID
-    "L_AIRPORT_SEQ_ID",  # OriginAirportSeqID / DestAirportSeqID
-    "L_CITY_MARKET_ID",  # OriginCityMarketID / DestCityMarketID
-    "L_STATE_ABR_AVIATION",  # OriginState / DestState
-    "L_STATE_FIPS",  # OriginStateFips / DestStateFips
-    "L_WORLD_AREA_CODES",  # OriginWac / DestWac
-    # Coded measures
-    "L_YESNO_RESP",  # DepDel15, ArrDel15, Cancelled, Diverted
-    "L_ONTIME_DELAY_GROUPS",  # DepartureDelayGroups / ArrivalDelayGroups
-    "L_DEPARRBLK",  # DepTimeBlk / ArrTimeBlk
-    "L_CANCELLATION",  # CancellationCode
-    "L_DISTANCE_GROUP_250",  # DistanceGroup
-    "L_DIVERSIONS",  # DivAirportLandings
+    # ── Used by dbt staging models ──────────────────────────────
+    "L_UNIQUE_CARRIERS",  # Reporting_Airline  → stg_carriers
+    "L_ONTIME_DELAY_GROUPS",  # DelayGroups     → stg_delay_groups
+    "L_CANCELLATION",  # CancellationCode      → stg_cancellation_reasons
+    "L_CITY_MARKET_ID",  # CityMarketID         → stg_city_markets
+    # ── Not consumed by dbt — commented out to reduce storage ──
+    # "L_QUARTERS",
+    # "L_MONTHS",
+    # "L_WEEKDAYS",
+    # "L_AIRLINE_ID",
+    # "L_CARRIER_HISTORY",
+    # "L_AIRPORT",
+    # "L_AIRPORT_ID",
+    # "L_AIRPORT_SEQ_ID",
+    # "L_STATE_ABR_AVIATION",
+    # "L_STATE_FIPS",
+    # "L_WORLD_AREA_CODES",
+    # "L_YESNO_RESP",
+    # "L_DEPARRBLK",
+    # "L_DISTANCE_GROUP_250",
+    # "L_DIVERSIONS",
 ]
 
 # BTS obfuscates URL parameters by rotating 13 positions through a combined
