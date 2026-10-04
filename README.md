@@ -219,7 +219,7 @@ one place. The singular test lives in `dbt/flights/tests/`.
 ├── airflow/
 │   ├── dags/
 │   │   ├── bts_ontime_reporting.py   # Monthly flight data ingestion
-│   │   ├── bts_lookups.py            # BTS reference tables ingeston (dynamic tasks)
+│   │   ├── bts_lookups.py            # BTS reference tables ingestion (dynamic tasks)
 │   │   ├── dbt_build.py              # dbt deps + build (triggered)
 │   │   └── include/                  # Schema definitions
 │   ├── config/                       # GCP credentials, dbt profile (gitignored)
