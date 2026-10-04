@@ -106,7 +106,7 @@ Three Airflow DAGs form the pipeline:
 | DAG | Schedule | Purpose |
 |---|---|---|
 | `bts_ontime_reporting` | `@monthly`, catchup from 2018-01 | Downloads monthly ZIP from BTS, validates the 109-column schema, converts to Parquet in memory, uploads to GCS with idempotent skip |
-| `bts_lookups` | `@monthly` | Fetches all 18 BTS reference tables in parallel via dynamic task mapping |
+| `bts_lookups` | `@monthly` | Fetches BTS reference tables in parallel via dynamic task mapping |
 | `dbt_build` | Triggered by ingestion | Runs `dbt build --target prod` — chained via `TriggerDagRunOperator`, skippable during backfills with `--conf '{"skip_dbt": true}'` |
 
 ---
@@ -219,7 +219,7 @@ one place. The singular test lives in `dbt/flights/tests/`.
 ├── airflow/
 │   ├── dags/
 │   │   ├── bts_ontime_reporting.py   # Monthly flight data ingestion
-│   │   ├── bts_lookups.py            # 18 BTS reference tables (dynamic tasks)
+│   │   ├── bts_lookups.py            # BTS reference tables ingestion (dynamic tasks)
 │   │   ├── dbt_build.py              # dbt deps + build (triggered)
 │   │   └── include/                  # Schema definitions
 │   ├── config/                       # GCP credentials, dbt profile (gitignored)
